@@ -20,10 +20,11 @@ public class JavaBeans {
 		super();
 	}
 	
-	public JavaBeans(String reserva_id2, String data_inicio2) {
+	public JavaBeans(String reserva_id, String data_inicio, String data_fim) {
 		super();
-		this.data_inicio = data_inicio2;
-		this.reserva_id = reserva_id2;
+		this.data_inicio = data_inicio;
+		this.reserva_id = reserva_id;
+		this.data_fim = data_fim;
 	}
 	
 	

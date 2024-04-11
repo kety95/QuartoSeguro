@@ -23,6 +23,17 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <style>
+    	.botao1 {
+		    display: inline-block;
+		    padding: 10px 20px;
+		    background-color: #FE937F;
+		    color: #fff;
+		    text-decoration: none;
+		    border-radius: 5px;
+		    margin-top: 10px;
+		}
+    </style>
 </head>
 
 <body>
@@ -61,11 +72,17 @@
 	            <tr>  
 		            <%
 					    String dataString = lista.get(i).getData_inicio();
+		            	String dataFimString = lista.get(i).getData_fim();
+		            	
 					    Date data = new SimpleDateFormat("yyyy-MM-dd").parse(dataString);
-					    String dataFormatada = new SimpleDateFormat("dd/MM/yyyy").format(data);
+					    String dataInicioFormatada = new SimpleDateFormat("dd/MM/yyyy").format(data);
+					    					  
+					    Date data2 = new SimpleDateFormat("yyyy-MM-dd").parse(dataFimString);
+					    String dataFimFormatada = new SimpleDateFormat("dd/MM/yyyy").format(data2);
+
 					%>
-					<td><%= dataFormatada %></td>
-	                <td><a href="javascript: confirmarCancelamento(<%= lista.get(i).getReserva_id() %>)" class="botao1">Cancelar reserva</a></td>
+					<td><%= dataInicioFormatada %> -  <%= dataFimFormatada %> <tr></tr> </td>
+	                <td>   <a href="javascript: confirmarCancelamento(<%= lista.get(i).getReserva_id() %>)" class="botao1">  Cancelar reserva</a></td>
 	            </tr>
 	            <% } %>
 	        </tbody>

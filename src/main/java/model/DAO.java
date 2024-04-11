@@ -105,7 +105,7 @@ public class DAO {
 		public ArrayList<JavaBeans> listarReservas(JavaBeans cadastro){
 			String cliente_Id = cadastro.getCliente_id();
 			ArrayList<JavaBeans> reserva = new ArrayList<>();
-			String read = ("SELECT reserva_id, data_inicio FROM reservas WHERE cliente_id = ?");
+			String read = ("SELECT reserva_id, data_inicio, data_fim FROM reservas WHERE cliente_id = ?");
 			try {
 				Connection con = conectar();
 				PreparedStatement pst = con.prepareStatement(read);
@@ -115,8 +115,9 @@ public class DAO {
 				while(rs.next()) {
 					String reserva_id = rs.getString(1);
 					String data_inicio = rs.getString(2);
+					String data_fim = rs.getString(3);
 					//populando o ArrayList
-					reserva.add(new JavaBeans(reserva_id, data_inicio));
+					reserva.add(new JavaBeans(reserva_id, data_inicio, data_fim));
 				}
 				con.close();
 				return reserva;
